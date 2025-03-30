@@ -32,3 +32,16 @@ class SalesRep { // Class representing a sales representative
         return client ? client.getTotalSpent() : 0; // Return 0 if client not found
     }
 }
+
+//Task 3
+class VIPCustomer extends Customer { // Class representing a VIP customer
+    constructor(name, email, vipLevel) { // Constructor to initialize VIP customer details
+        super(name, email); // Call the parent class constructor
+        this.vipLevel = vipLevel; // Set the VIP level
+    }
+
+    getTotalSpent() { // Override method to calculate total spent with loyalty bonus
+        const totalSpent = super.getTotalSpent(); // Get the total spent from the parent class
+        return totalSpent + totalSpent * 0.1; // Add 10% loyalty bonus
+    }
+}
