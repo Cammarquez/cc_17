@@ -45,3 +45,31 @@ class VIPCustomer extends Customer { // Class representing a VIP customer
         return totalSpent + totalSpent * 0.1; // Add 10% loyalty bonus
     }
 }
+
+// Task 4
+const customer1 = new Customer("Alice", "alice@example.com"); // Create a new customer
+const customer2 = new Customer("Bob", "bob@example.com");
+const vipCustomer = new VIPCustomer("Charlie", "charlie@example.com", "Gold");
+
+customer1.addPurchase(200); // Add purchases to customers
+customer1.addPurchase(150);
+customer2.addPurchase(600);
+vipCustomer.addPurchase(400);
+vipCustomer.addPurchase(300);
+
+const salesRep = new SalesRep("Diana"); // Create a new sales representative
+salesRep.addClient(customer1);
+salesRep.addClient(customer2);
+salesRep.addClient(vipCustomer);
+
+const totalRevenue = salesRep.clients.reduce((total, client) => total + client.getTotalSpent(), 0); // Calculate total revenue
+console.log("Total Revenue:", totalRevenue);
+
+const highSpenders = salesRep.clients.filter(client => client.getTotalSpent() > 500); // Filter high spenders
+console.log("High Spenders:", highSpenders.map(client => client.name));
+
+const customerSummary = salesRep.clients.map(client => ({ // Create a summary of customers
+    name: client.name, // Get customer name
+    totalSpent: client.getTotalSpent() // Get total spent
+}));
+console.log("Customer Summary:", customerSummary);
